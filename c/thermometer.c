@@ -1,7 +1,7 @@
 #include <stdio.h>
 void main(){
-    int fahr,celsius;//华氏温度，摄氏温度
-    int lower,upper,step;
+    float fahr,celsius;//华氏温度，摄氏温度
+    float lower,upper,step;
 
     lower = 0; //温度表的下限
     upper = 300;//温度表的上限
@@ -9,8 +9,8 @@ void main(){
 
     fahr = lower;
     while(fahr <= upper){
-        celsius = 5 * (fahr-32)/9;
-        printf("%d\t%d\n",fahr,celsius);
+        celsius = (5.0/9.0) * (fahr-32.0);
+        printf("%3.0f %6.1f\n",fahr,celsius);
         fahr = fahr+step;
     }
 }
