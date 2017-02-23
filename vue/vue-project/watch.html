@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id="watch-example">
+        <p>
+        Ask a yes/no question: 
+        </p>
+        <p>{{answer}}</p>
+    </div>
+  </body>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<script>
+var watchExampleVm = new Vue({
+      el: '#example',
+      data: {
+          question:'',
+          answer:'I cannot give you a answer until you ask a question'
+      },
+      methods:{
+        getAnswer:_.debounce(
+              function(){
+                  var vm = this
+                  if(this.question.indexOf('?'===-1){
+                        vm.answer='Question usually contain a question mark. ;-)'
+                        return 
+                  }
+                  vm.answer = 'Thinking...'
+                  axios.get('https://yesno.wtf/api').then(function(){
+                    vm.answer= _.capitalize(reponse.data.answer)
+                  })
+
+              }
+                          )
+      }
+        })
+</script>
+</html>
