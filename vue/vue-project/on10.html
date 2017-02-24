@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id="example-11">
+        <select v-model="selected" multiple>
+            <option> A </option>
+            <option> B </option>
+            <option> C </option>
+        </select>
+        <span>Selected:{{selected}} </span>
+    </div>
+  </body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+ new Vue({
+      el: '#example-11',
+      data: {
+          selected: 'A',
+          options:[
+          { text: 'One',value:'A' },
+          { text: 'Two',value:'B' },
+          { text: 'Three',value:'C' }
+          ]
+      }
+        })
+</script>
+</html>

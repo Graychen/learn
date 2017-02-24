@@ -5,21 +5,19 @@
     <title>test</title>
   </head>
   <body>
-    <div id="example-1">
-        <button v-on:click="counter += 1">增加1</button>
-        <p>这个按钮被点击了{{ counter }}次。</p>
+    <div id="example-6">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked  }}</label>
     </div>
     <!-- built files will be auto injected -->
   </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
-var example1 = new Vue({
-      el: '#example-1',
+var example6 = new Vue({
+      el: '#example-6',
       data: {
-              counter: 0
-                
+               checked:'false' 
       }
-
         })
 </script>
 </html>

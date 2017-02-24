@@ -5,21 +5,20 @@
     <title>test</title>
   </head>
   <body>
-    <div id="example-1">
-        <button v-on:click="counter += 1">增加1</button>
-        <p>这个按钮被点击了{{ counter }}次。</p>
+    <div id="example-5">
+       <span>multiple message is: </span> 
+       <p style="white-space:pre">{{message}}</p>
+       <textarea v-model="message" placeholder="add multiple lines"> </textarea>
     </div>
     <!-- built files will be auto injected -->
   </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
-var example1 = new Vue({
-      el: '#example-1',
+var example5 = new Vue({
+      el: '#example-5',
       data: {
-              counter: 0
-                
+               message:'Vue.js' 
       }
-
         })
 </script>
 </html>
