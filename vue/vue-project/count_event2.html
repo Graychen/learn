@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id="app">
+        <current-input label="Price" v-model="price"></current-input>
+        <current-input label="Shipping" v-model="shipping"></current-input>
+        <current-input label="Handling" v-model="handling"></current-input>
+        <current-input label="Discount" v-model="discount"></current-input>
+        <p>Total: ${{total}}</p>
+    </div>
+  </body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>
+<script>
+new Vue({
+      el: '#counter-event-example',
+      data: {
+        price:0
+        shipping:0
+        handling:0
+        discount:0
+      },
+      computed:{
+        total: function(){
+            return ((this.price*100+this.shipping*100+this.handling*100+this.discount*100)/100).toFixed(2)
+        }
+      }
+        })
+
+Vue.component('currency-input', {
+  template: '\
+      <div>\
+            <label v-if="label">{{ label  }}</label>\
+            $\
+            <input\
+            ref="input"\
+            v-bind:value="value"\
+            v-on:input="updateValue($event.target.value)"\
+            v-on:focus="selectAll"\
+            v-on:blur="formatValue"\
+              >\
+          </div>\
+            ',
+    props: {
+    value: {
+          type: Number,
+                default: 0
+                    
+    },
+    label: {
+          type: String,
+          default: ''
+       }
+                                                                            },
+mounted: function () {
+    this.formatValue()
+      
+         },
+methods: {
+updateValue: function (value) {
+          var result = currencyValidator.parse(value, this.value)
+              if (result.warning) {
+                this.$refs.input.value = result.value
+              }
+            this.$emit('input', result.value)
+             },
+formatValue: function () {
+              this.$refs.input.value = currencyValidator.format(this.value)
+             },
+selectAll: function (event) {
+               setTimeout(function () {
+                   event.target.select()
+                       },0)
+           }
+         }
+        })
+
+new Vue({
+  el: '#app',
+  data: {
+          price: 0,
+          shipping: 0,
+          handling: 0,
+          discount: 0
+  },
+computed: {
+total: function () {
+return ((
+        this.price * 100 + 
+        this.shipping * 100 + 
+        this.handling * 100 - 
+        this.discount * 100
+        ) / 100).toFixed(2)
+}
+  
+}
+
+        })
+</script>
+</html>

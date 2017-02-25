@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id="example-2">
+        <simple-component> </simple-component>
+        <simple-component> </simple-component>
+        <simple-component> </simple-component>
+    </div>
+  </body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+var data={counter:0}
+
+Vue.component('simple-component',{
+    template:'<button v-on:click="counter+=1">{{counter}}</button>',
+    data:function(){
+        return data
+    }
+        })
+
+new Vue({
+    el:'#example-2'
+        })
+</script>
+</html>
