@@ -1,0 +1,9 @@
+[Service]
+Type=forking
+PIDFile=/var/run/swoole.pid
+ExecStart=/usr/bin/php /var/www/swoole/server.php
+ExecStop=/bin/kill $MAINPID
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy = multi-user.target

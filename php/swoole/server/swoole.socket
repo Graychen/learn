@@ -1,0 +1,8 @@
+[Unit]
+Description=Swoole Socket
+
+[Socket]
+ListenStream=9501
+Accept=false
+[Install]
+WantedBy = sockets.target
